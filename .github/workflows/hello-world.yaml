@@ -17,12 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: code
+          path: .
       - run: chmod +x ci/build-app.sh
   Test:
     needs: Clone-Down
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: code
+          path: .
       - name : Test
         run: ci/unit-test-app.sh
       
