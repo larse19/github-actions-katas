@@ -58,8 +58,13 @@ jobs:
         with:
           username: ${{ env.docker_username }}
           password: ${{ env.docker_password }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: larse19/ga06:latest
+      - name: Build Docker Image
+      run: |
+            export GIT_COMMIT="GA-$GITHUB_SHA"
+            chmod +x ./ci/build-docker.sh
+            ./ci/build-docker.sh
+    - name: Push to Docker Hub
+      run: |
+            export GIT_COMMIT="GA-$GITHUB_SHA"
+            chmod +x ./ci/push-docker.sh
+            ./ci/push-docker.sh
