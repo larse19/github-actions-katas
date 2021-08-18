@@ -70,5 +70,10 @@ jobs:
     needs: [Docker-Image]
     runs-on: ubuntu-latest
     steps:
+      - name: Download a single artifact
+          uses: actions/download-artifact@v2
+          with:
+            name: code
+            path: .
       - name: componentTest
         run: chmod +x ci/component-test.sh
