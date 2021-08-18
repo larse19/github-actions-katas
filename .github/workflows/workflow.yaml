@@ -66,3 +66,9 @@ jobs:
         run: |
               export GIT_COMMIT="GA-$GITHUB_SHA"
               chmod +x ci/push-docker.sh
+  Component-test:
+    needs: [Docker-Image]
+    runs-on: ubuntu-latest
+    steps:
+      - name: componentTest
+        run: chmod +x ci/component-test.sh
