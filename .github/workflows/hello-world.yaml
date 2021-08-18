@@ -23,6 +23,11 @@ jobs:
           name: code
           path: .
       - run: chmod +x ci/build-app.sh
+      - name: Upload Repo
+        uses: actions/upload-artifact@v2
+        with:
+          name: code
+          path: .
   Test:
     needs: Clone-Down
     runs-on: ubuntu-latest
