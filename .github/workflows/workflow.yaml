@@ -57,6 +57,7 @@ jobs:
 #        with:
 #          username: ${{ env.docker_username }}
 #          password: ${{ env.docker_password }}
+#
       - name: Build Docker Image
         run: |
               export GIT_COMMIT="GA-$GITHUB_SHA"
